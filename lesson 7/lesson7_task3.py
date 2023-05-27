@@ -25,48 +25,47 @@
 
 # Здесь пишем код
 class PublicTransport:
-    def __init__(self, brand, __engine_power, year, color, max_speed):
+    def __init__(self, brand, engine_power, year, color, max_speed):
         self.brand = brand
-        self.__engine_power = __engine_power
+        self._engine_power = engine_power
         self.year = year
         self.color = color
         self.max_speed = max_speed
 
     @property
     def info(self):
-        print(self.brand, self.__engine_power, self.year, self.color, self.max_speed)
+        print(self.brand, self.engine_power, self.year, self.color, self.max_speed)
 
 class Bus(PublicTransport):
-    def __init__(self, brand, __engine_power, year, color, max_speed, passengers, park, fare):
+    def __init__(self, brand, engine_power, year, color, max_speed, passengers, park, fare):
+        self.brand = brand
+        self._engine_power = engine_power
+        self.year = year
+        self.color = color
+        self.max_speed = max_speed
+        self.passengers = passengers
+        self.__park = park
+        self._fare = fare
+
+    @property
+    def park(self):
+        return self.park
+    @park.setter
+    def park(self, park):
+        if 1000 <= park <= 9999:
+            return self.park
+
+
+class Tram(PublicTransport):
+    def __init__(self, brand, __engine_power, year, color, max_speed, route, path, fare):
         self.brand = brand
         self.__engine_power = __engine_power
         self.year = year
         self.color = color
         self.max_speed = max_speed
-        self.passengers = passengers
-        self.park = park
-        self.fare = fare
-
-    @property
-    def park(self):
-        return self._park
-
-    @park.setter
-    def park(self, park_2):
-        if 1000 <= park_2 <= 9999:
-            self._park = park_2
-
-
-class Tram(PublicTransport):
-    def __init__(self, brand, engine_power, year, color, max_speed, _route, path, __fare):
-        self.brand = brand
-        self.__engine_power = engine_power
-        self.year = year
-        self.color = color
-        self.max_speed = max_speed
-        self._route = _route
+        self.__route = route
         self.path = path
-        self.__fare = __fare
+        self._fare = fare
 
     @property
     def how_long(self):
@@ -81,11 +80,11 @@ first_tram = Tram('71-931M', 125, 2010, 'Красный', 75, 5, 15, 32)
 second_tram = Tram('71-409-1', 240, 2018, 'Белый', 85, 7, 17, 32)
 
 assert isinstance(type(transport).info, property), 'В классе PublicTransport, info - не свойство класса'
-#assert transport._engine_power, 'В классе PublicTransport, engine_power не защищенный атрибут'
-#assert first_bus._Bus__park, 'В классе Bus, park не приватный атрибут'
-#assert second_bus._fare, 'В классе Bus, fare не защищенный атрибут'
-#assert first_tram._fare, 'В классе Tram, fare не защищенный атрибут'
-#assert second_tram._Tram__route, 'В классе Tram, route не приватный атрибут'
+assert transport._engine_power, 'В классе PublicTransport, engine_power не защищенный атрибут'
+assert first_bus._Bus__park, 'В классе Bus, park не приватный атрибут'
+assert second_bus._fare, 'В классе Bus, fare не защищенный атрибут'
+assert first_tram._fare, 'В классе Tram, fare не защищенный атрибут'
+assert second_tram._Tram__route, 'В классе Tram, route не приватный атрибут'
 assert isinstance(type(first_tram).how_long, property), 'В классе Tram, how_long - не свойство класса'
 assert first_tram.how_long == 1.25, 'В классе Tram, how_long неверно вычисляется'
 assert isinstance(type(second_bus).park, property), 'В классе Bus, park - не свойство класса'

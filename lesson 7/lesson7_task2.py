@@ -57,6 +57,37 @@ class PersonInfo:
         solary = 1337 * self.age * letter
         return solary
 
+class PersonInfo:
+    def __init__(self, fio, age, *department):
+        self.fio = fio
+        self.age = age
+        self.department = department
+
+    def short_name(self):
+        list_fio = self.fio.split()
+        list_name = list(list_fio[0])
+        name_str = list_fio[1] + ' ' + list_name[0] + '.'
+        return name_str
+
+
+    def path_deps(self):
+        b = []
+        for i in self.department:
+            b.append(i)
+        b = ' --> '.join(b)
+        return b
+
+    def new_salary(self):
+        a = list(''.join(self.department))
+        letters_dict = {}
+        for letter in a:            
+            letters_dict[letter] = letters_dict.get(letter, 0) + 1
+        points_all = sorted(letters_dict.values(), reverse=True)
+        points_max = sum(points_all[:3])
+        solary = 1337 * self.age * points_max
+        return solary
+
+
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

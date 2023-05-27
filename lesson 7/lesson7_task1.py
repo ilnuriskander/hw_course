@@ -11,24 +11,24 @@
 
 # Здесь пишем код
 class Segment:
-    def __int__(self, x1, y1, x2, y2):
-        self.x1 = x1
-        self.x2 = x2
-        self.y1 = y1
-        self.y2 = y2
+    def __init__(self, point_1, point_2):
+        self.x1 = point_1[0]
+        self.x2 = point_2[0]
+        self.y1 = point_1[1]
+        self.y2 = point_2[1]
 
-    def length(self, x1, y1, x2, y2):
+    def length(self):
         d = round(((self.x2 - self.x1) ** 2 + (self.y2 - self.y1) ** 2) ** 0.5, 2)
         return d
 
-    def x_axis_intersection(self, x1, y1, x2, y2):
+    def x_axis_intersection(self):
         if (self.x1 >= 0 and self.x2 <= 0) or  (self.x1 <= 0 and self.x2 >= 0):
             return True
         else:
             return False
 
 
-    def y_axis_intersection(self, x1, y1, x2, y2):
+    def y_axis_intersection(self):
         if (self.y1 >= 0 and self.y2 <= 0) or  (self.y1 <= 0 and self.y2 >= 0):
             return True
         else:
