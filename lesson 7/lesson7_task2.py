@@ -80,7 +80,7 @@ class PersonInfo:
     def new_salary(self):
         a = list(''.join(self.department))
         letters_dict = {}
-        for letter in a:            
+        for letter in a:
             letters_dict[letter] = letters_dict.get(letter, 0) + 1
         points_all = sorted(letters_dict.values(), reverse=True)
         points_max = sum(points_all[:3])

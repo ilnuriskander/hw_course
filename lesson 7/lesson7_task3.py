@@ -49,11 +49,14 @@ class Bus(PublicTransport):
 
     @property
     def park(self):
-        return self.park
+        return self.__park
+
     @park.setter
-    def park(self, park):
-        if 1000 <= park <= 9999:
-            return self.park
+    def park(self, value):
+        if 1000 <= value <= 9999:
+            self.__park = value
+
+
 
 
 class Tram(PublicTransport):
