@@ -29,41 +29,6 @@ class PersonInfo:
         self.department = department
 
     def short_name(self):
-        list_name = self.fio.split()
-        list_surname = list(list_name[1])
-        name_str = list_name[0] + ' ' + list_surname[0] + '.'
-        return name_str
-
-    def path_deps(self):
-        b = []
-        for i in self.department:
-            b.append(i)
-        b = ' --> '.join(b)
-        return b
-
-    def new_salary(self):
-        a = list(''.join(self.department))
-        count_max = 0
-        count_mid = 0
-        count_min = 0
-        for i in a:
-            if a.count(i) >= count_max:
-                count_max = a.count(i)
-            elif a.count(i) >= count_mid:
-                count_mid = a.count(i)
-            elif a.count(i) >= count_min:
-                count_min = a.count(i)
-        letter = count_max + count_mid + count_min
-        solary = 1337 * self.age * letter
-        return solary
-
-class PersonInfo:
-    def __init__(self, fio, age, *department):
-        self.fio = fio
-        self.age = age
-        self.department = department
-
-    def short_name(self):
         list_fio = self.fio.split()
         list_name = list(list_fio[0])
         name_str = list_fio[1] + ' ' + list_name[0] + '.'
