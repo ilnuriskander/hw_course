@@ -22,23 +22,22 @@
 # help(func1) должен выводит одинаковый текст, когда есть декоратор на функции func1 и когда его нет
 # Реализовать без подключения новых модулей и сторонних библиотек.
 
-
 import datetime
-
-
 
 dt = datetime.datetime.now()
 
-def func_log(func, file_log='log.txt'):
-    def wrapper():
-        logs = open(file_log, 'a+', encoding='utf-8')
-        logs.write(func())
-        logs.close()
+def func_log(file_log):
+    def write_logs(func):
+        def wrapper():
+            logs = open(file_log, 'a+', encoding='utf-8')
+            func_info = func.__name__, 'вызвана', dt.strftime('%d.%m %H:%M:%S'), '\n'
+            func_info = ' '.join(func_info)
+            logs.write(func_info)
+            logs.close()
+            return func
+        return wrapper()
+    return write_logs
 
-@func_log
-def f():
-    a = f.__name__, 'вызвана', dt.strftime('%d.%m %H:%M:%S')
-    b = ' '.join(a)
-    return b
-
-# Здесь пишем код
+@func_log(file_log='log.txt')
+def func():
+    print('запуск функции')
