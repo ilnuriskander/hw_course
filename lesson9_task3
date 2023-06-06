@@ -4,16 +4,16 @@
 # Нужно найти сумму трёх самых дорогих покупок, которые запишутся в переменную three_most_expensive_purchases
 
 # Здесь пишем код
-a = open('test_file/task_3.txt', 'r', encoding='utf-8')
-f = a.read()
-fp = f.split('\n\n')
+file = open('test_file/task_3.txt', 'r', encoding='utf-8')
+file = file.read()
+file_list = file.split('\n\n')
 new_list = []
-for i in range(len(fp)):
-    fp2 = fp[i].split('\n')
-    fp2 = [int(j) for j in fp2]
-    pokupka = sum(fp2)
+for i in range(len(file_list)):
+    file_list2 = file_list[i].split('\n')
+    file_list2 = [int(j) for j in file_list2]
+    pokupka = sum(file_list2)
     new_list.append(pokupka)
-b = sorted(new_list, reverse=True)
-three_most_expensive_purchases = sum(b[:3])
+sort_popupki = sorted(new_list, reverse=True)
+three_most_expensive_purchases = sum(sort_popupki[:3])
 
 assert three_most_expensive_purchases == 202346
