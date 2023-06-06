@@ -10,7 +10,7 @@ file_list = file.split('\n\n')
 new_list = []
 for i in range(len(file_list)):
     file_list2 = file_list[i].split('\n')
-    file_list2 = [int(j) for j in file_list2]
+    file_list2 = [int(k) for k in file_list2]
     pokupka = sum(file_list2)
     new_list.append(pokupka)
 sort_popupki = sorted(new_list, reverse=True)
