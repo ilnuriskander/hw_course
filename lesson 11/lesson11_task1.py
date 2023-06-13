@@ -25,7 +25,6 @@ try:
     podrobnee.location_once_scrolled_into_view
     podrobnee.click()
     assert browser.current_url == 'https://tensor.ru/about'
-
 finally:
     browser.quit()
 
