@@ -18,9 +18,14 @@ enter = browser.find_element(By.CSS_SELECTOR, '[class="controls-BaseButton__wrap
 enter.click()
 password = browser.find_element(By.CSS_SELECTOR, '[name="Password"]')
 password.send_keys(user_password)
-#enter.click()
+enter.click() #тут не работает. нужно исправить
 contacts_1 = browser.find_element(By.CSS_SELECTOR, '.NavigationPanels-Accordion__title.NavigationPanels-Accordion__title_level-1')
 contacts_1.click()
 contacts_2 = browser.find_element(By.CSS_SELECTOR, '.NavigationPanels-SubMenu__headTitle.NavigationPanels-SubMenu__title-with-separator.NavigationPanels-Accordion__prevent-default')
 contacts_2.click()
+new_message = browser.find_element(By.CSS_SELECTOR, '[class="controls-Button__icon controls-BaseButton__icon controls-icon_size-m controls-icon_style-default controls-icon icon-RoundPlus"]')
+new_message.click()
+find_employer = browser.find_element(By.CSS_SELECTOR, '[class="controls-StackTemplate-content"] [class="controls-Field js-controls-Field controls-InputBase__nativeField controls-Search__nativeField_caretEmpty controls-Search__nativeField_caretEmpty_theme_default   controls-InputBase__nativeField_hideCustomPlaceholder"]')
+find_employer.send_keys('Курс Автотест')
+
 
