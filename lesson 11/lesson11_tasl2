@@ -1,0 +1,26 @@
+# Авторизоваться на сайте https://fix-online.sbis.ru/
+# Перейти в реестр Контакты
+# Отправить сообщение самому себе
+# Убедиться, что сообщение появилось в реестре
+# Удалить это сообщение и убедиться, что удалили
+# Для сдачи задания пришлите код и запись с экрана прохождения теста
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver import ActionChains
+browser = webdriver.Chrome()
+sbis_site = 'https://fix-online.sbis.ru/'
+browser.get(sbis_site)
+user_login, user_password = 'autotest_cours_11', 'autotest_cours_11autotest_cours_11'
+login = browser.find_element(By.CSS_SELECTOR, '[name="Login"]')
+login.send_keys(user_login)
+enter = browser.find_element(By.CSS_SELECTOR, '[class="controls-BaseButton__wrapper controls-Button__wrapper_viewMode-filled controls-BaseButton__wrapper_captionPosition_end controls-Button_textAlign-center controls-Button__wrapper_filled_4xl"]')
+enter.click()
+password = browser.find_element(By.CSS_SELECTOR, '[name="Password"]')
+password.send_keys(user_password)
+#enter.click()
+contacts_1 = browser.find_element(By.CSS_SELECTOR, '.NavigationPanels-Accordion__title.NavigationPanels-Accordion__title_level-1')
+contacts_1.click()
+contacts_2 = browser.find_element(By.CSS_SELECTOR, '.NavigationPanels-SubMenu__headTitle.NavigationPanels-SubMenu__title-with-separator.NavigationPanels-Accordion__prevent-default')
+contacts_2.click()
+
