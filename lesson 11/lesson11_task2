@@ -27,5 +27,8 @@ new_message = browser.find_element(By.CSS_SELECTOR, '[class="controls-Button__ic
 new_message.click()
 find_employer = browser.find_element(By.CSS_SELECTOR, '[class="controls-StackTemplate-content"] [class="controls-Field js-controls-Field controls-InputBase__nativeField controls-Search__nativeField_caretEmpty controls-Search__nativeField_caretEmpty_theme_default   controls-InputBase__nativeField_hideCustomPlaceholder"]')
 find_employer.send_keys('Курс Автотест')
-
+employer_button = browser.find_element(By.CSS_SELECTOR, '.person-BaseInfo.ws-flexbox')
+employer_button.click()
+pole_massage = browser.find_element(By.CSS_SELECTOR, '.textEditor_slate_Field.textEditor_slate_Container')
+pole_massage.send_keys('тестовое сообщение')
 
