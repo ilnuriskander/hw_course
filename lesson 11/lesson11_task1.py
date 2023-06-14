@@ -15,8 +15,10 @@ try:
     browser.get(sbis_site)
     contacts = browser.find_element(By.CSS_SELECTOR, '.sbisru-Header__menu-item-1.mh-8')
     contacts.click()
+    time.sleep(2
     tensor_button = browser.find_element(By.CSS_SELECTOR, '.pt-32.pb-16 .sbisru-Contacts__logo-tensor.mb-8')
     tensor_button.click()
+    time.sleep(2
     handles = browser.window_handles
     browser.switch_to.window(handles[1])
     block_sila = browser.find_element(By.CSS_SELECTOR, '.tensor_ru-Index__block4-content')
