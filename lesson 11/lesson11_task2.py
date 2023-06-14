@@ -37,24 +37,25 @@ try:
     employer_button = browser.find_element(By.CSS_SELECTOR, '.person-BaseInfo.ws-flexbox')
     employer_button.click()
     time.sleep(3)
-    pole_massage = browser.find_element(By.CSS_SELECTOR, '.textEditor_slate_Field.textEditor_slate_Container')
-    massage_text = 'тестовое сообщение ' + time.strftime('%Y-%m-%d %H:%M:%S')
-    pole_massage.send_keys(massage_text)
+    pole_message = browser.find_element(By.CSS_SELECTOR, '.textEditor_slate_Field.textEditor_slate_Container')
+    message_text = 'тестовое сообщение ' + time.strftime('%Y-%m-%d %H:%M:%S')
+    pole_message.send_keys(message_text)
     send = browser.find_element(By.CSS_SELECTOR, '.controls-Button__icon.controls-BaseButton__icon.controls-icon_size-s.controls-icon_style-contrast.controls-icon.icon-BtArrow')
     send.click()
     time.sleep(3)
-    massage = browser.find_element(By.CSS_SELECTOR, '.msg-entity-text.msg-entity_font_croppless.richEditor_richContentRender_fontSize-m_theme-default')
-    assert massage.is_displayed(), 'Сообщение не получено'
-    assert massage.text == massage_text, 'Текст сообщения не соответсвует отправленному'
+    message = browser.find_element(By.CSS_SELECTOR, '.msg-entity-text.msg-entity_font_croppless.richEditor_richContentRender_fontSize-m_theme-default')
+    assert message.is_displayed(), 'Сообщение не получено'
+    assert message.text == message_text, 'Текст сообщения не соответсвует отправленному'
     action_chains = ActionChains(browser)
-    action_chains.move_to_element(massage)
-    action_chains.context_click(massage)
+    action_chains.move_to_element(message)
+    action_chains.context_click(message)
     action_chains.perform()
+    time.sleep(2)
     delete_message = browser.find_element(By.CSS_SELECTOR, '.controls-icon_size-m.controls-icon_style-danger.icon-Erase.controls-icon.controls-Menu__icon.controls-Menu__icon_m-left')
     delete_message.click()
-    time.sleep(3)
+    time.sleep(2)
     try:
-        massage.is_displayed()
+        message.is_displayed()
     except:
         pass
     else:
