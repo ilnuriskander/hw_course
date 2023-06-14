@@ -12,6 +12,7 @@ from selenium.webdriver import ActionChains, Keys
 browser = webdriver.Chrome()
 sbis_site = 'https://fix-online.sbis.ru/'
 try:
+    browser.maximize_window()
     browser.get(sbis_site)
     time.sleep(2)
     user_login, user_password = 'autotest_cours_11', 'autotest_cours_11autotest_cours_11'
@@ -52,8 +53,11 @@ try:
     delete_message = browser.find_element(By.CSS_SELECTOR, '.controls-icon_size-m.controls-icon_style-danger.icon-Erase.controls-icon.controls-Menu__icon.controls-Menu__icon_m-left')
     delete_message.click()
     time.sleep(3)
-    if massage.is_displayed() == True:
-        raise Exception('Сообщение не удалилось')
-    time.sleep(10)
+    try:
+        massage.is_displayed()
+    except:
+        pass
+    else:
+        raise Exception('Сообщение не удалено')
 finally:
     browser.quit()
